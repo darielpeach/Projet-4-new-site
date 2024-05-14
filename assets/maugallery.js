@@ -123,7 +123,7 @@
     // Gestion du bouton précédent modal
     prevImage() {
       let activeImage = $(".lightboxImage")
-      let activeTag = $(".active").data("images-toggle");
+      let activeTag = $(".active-tag").data("images-toggle");
       let imagesCollection = [];
 
       if (activeTag === "all") {
@@ -159,7 +159,7 @@
     },
     nextImage() {
       let activeImage = $(".lightboxImage")
-      let activeTag = $(".active").data("images-toggle");
+      let activeTag = $(".active-tag").data("images-toggle");
       let imagesCollection = [];
 
       if (activeTag === "all") {
@@ -228,7 +228,7 @@
       var tagItems =
         '<li class="nav-item"><button class="nav-link active active-tag"  data-images-toggle="all">All</button></li>';
       $.each(tags, function(index, value) {
-        tagItems += `<li class="nav-item active">
+        tagItems += `<li class="nav-item ">
                 <button class="nav-link"  data-images-toggle="${value}">${value}</button></li>`;
       });
       var tagsRow = `<ul class="my-4 tags-bar nav nav-pills">${tagItems}</ul>`;
@@ -245,11 +245,11 @@
     // filtra + gestion du style du bouton sélectionné
 
     filterByTag() {
-      if ($(this).hasClass("active")) {
+      if ($(this).hasClass("active active-tag")) {
         return;
       }
-      $(".active").removeClass("active ");
-      $(this).addClass("active");
+      $(".active").removeClass("active active-tag");
+      $(this).addClass("active active-tag");
 
       var tag = $(this).data("images-toggle");
 
